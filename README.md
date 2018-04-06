@@ -8,4 +8,11 @@ python ./feature_extract/gen_io_list.py video_path frames_path output_path input
 # 比如
 python ./feature_extract/gen_io_list.py /extra_disk/dataset/UCF_Crimes/Videos /extra_disk/dataset/yzy/UCF_Crimes_frames /extra_disk/dataset/yzy/UCF_Crimes_C3D_features/Videos ./feature_extract/ucfcrime_input_list_video.txt ./feature_extract/ucfcrime_output_list_video_prefix.txt
 ```
-- 现将路径切换到C3D_HOME/C3D-v1.0下，依照C3D的说明运行
+### 开始提取
+将路径切换到C3D_HOME/C3D-v1.0下，打开examples/c3d_feature_extraction/prototxt/c3d_sport1m_feature_extractor_frm.prototxt文件，修改source为输入索引文件所在路径，然后依照C3D的说明运行(其中，提取的特征是由输出list文件决定的，我默认指定在feature_extract文件夹下了),比如：
+```shell
+# 1指的是GPU 100指的是batch大小，8688指的是轮数（即8688*100需要大于等于总clip数）
+build/tools/extract_image_features.bin examples/c3d_feature_extraction/prototxt/c3d_sport1m_feature_extractor_frm.prototxt conv3d_deepnetA_sport1m_iter_1900000 1 100 8688 ~/workspace/Surveillance-Anomaly-Detection./feature_extract/ucfcrime_output_list_video_prefix.txt fc6-1
+```
+
+

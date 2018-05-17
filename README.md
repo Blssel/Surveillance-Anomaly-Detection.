@@ -14,5 +14,5 @@ python ./feature_extract/gen_io_list.py /extra_disk/dataset/UCF_Crimes/Videos /e
 # 1指的是GPU 100指的是batch大小，8688指的是轮数（即8688*100需要大于等于总clip数）
 build/tools/extract_image_features.bin examples/c3d_feature_extraction/prototxt/c3d_sport1m_feature_extractor_frm.prototxt conv3d_deepnetA_sport1m_iter_1900000 1 100 8688 ~/workspace/Surveillance-Anomaly-Detection./feature_extract/ucfcrime_output_list_video_prefix.txt fc6-1
 ```
-
+> 关于提取出来的文件结构：5 32-bit integers: num, chanel, length, height, width. (record the size of the blob) Then followed by the data of (num * channel * length * height * width) each data is a 32-bit float in row order.
 
